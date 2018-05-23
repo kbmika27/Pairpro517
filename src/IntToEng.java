@@ -6,13 +6,14 @@ public class IntToEng {
     public static void main(String[] args) {
     	while(true){
         Scanner sc = new Scanner(System.in);
+        System.out.println("数字を入力してください。");
         System.out.print("input=");
         int input = sc.nextInt();
         String s=String.valueOf(input);
         String str[]=s.split("");
         if(input<20)
         System.out.println(translateEng(input));
-        else System.out.println(Overtwe(str));
+        else if(input>=20&&input<=100) System.out.println(Overtwe(str));
         System.out.print("終了しますか(y/n)");
         String ans=sc.next();
         if(ans.startsWith("y")) break;
@@ -47,7 +48,7 @@ public class IntToEng {
     	else eng="翻訳できません";
         return eng;
     }
-    static String Overtwe(String[] str) {
+    static String Overtwe(String[] str) {//20~100
     	String keta="";
     	if(str.length==2){
     		if(str[0].equals("2"))keta="twenty";
@@ -62,6 +63,11 @@ public class IntToEng {
     		if(!str[1].equals("0"))
     		keta+=translateEng(Integer.parseInt(str[1]));
     	}
+    	else {
+    		keta="one hundred";
+    	}
+    	
     	return keta;
     }
+    
 }
