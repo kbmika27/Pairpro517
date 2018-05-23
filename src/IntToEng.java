@@ -13,7 +13,8 @@ public class IntToEng {
         String str[]=s.split("");
         if(input<20)
         System.out.println(translateEng(input));
-        else if(input>=20&&input<=100) System.out.println(Overtwe(str));
+        else if(input>=20&&input<=100) System.out.println(Overtwe(str,0));
+        else System.out.println(Overhund(str));
         System.out.print("終了しますか(y/n)");
         String ans=sc.next();
         if(ans.startsWith("y")) break;
@@ -48,25 +49,35 @@ public class IntToEng {
     	else eng="翻訳できません";
         return eng;
     }
-    static String Overtwe(String[] str) {//20~100
+    static String Overtwe(String[] str,int i) {//20~100
     	String keta="";
-    	if(str.length==2){
-    		if(str[0].equals("2"))keta="twenty";
-    		else if(str[0].equals("3"))keta="thirty";
-    		else if(str[0].equals("4"))keta="forty";
-    		else if(str[0].equals("5"))keta="fifty";
-    		else if(str[0].equals("6"))keta="sixty";
-    		else if(str[0].equals("7"))keta="seventy";
-    		else if(str[0].equals("8"))keta="eighty";
-    		else if(str[0].equals("9"))keta="ninety";
+    	if(str.length-i==2){
+    		if(str[i].equals("2"))keta="twenty";
+    		else if(str[i].equals("3"))keta="thirty";
+    		else if(str[i].equals("4"))keta="forty";
+    		else if(str[i].equals("5"))keta="fifty";
+    		else if(str[i].equals("6"))keta="sixty";
+    		else if(str[i].equals("7"))keta="seventy";
+    		else if(str[i].equals("8"))keta="eighty";
+    		else if(str[i].equals("9"))keta="ninety";
     		
-    		if(!str[1].equals("0"))
-    		keta+=translateEng(Integer.parseInt(str[1]));
+    		if(!str[i+1].equals("0"))
+    		keta+=translateEng(Integer.parseInt(str[i+1]));
     	}else {
     		keta="one hundred";
     	}
     	
     	return keta;
+    }
+    static String Overhund(String[] str) {
+    	String hun="";
+    	if(str.length==3){
+    		int s=Integer.parseInt(str[0]);//100の位
+    		hun=translateEng(s)+" hundred ";
+    		hun+=Overtwe(str,1);
+    		
+    	}
+    	return hun;
     }
     
 }
