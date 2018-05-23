@@ -6,7 +6,7 @@ public class IntToEng {
     public static void main(String[] args) {
     	while(true){
         Scanner sc = new Scanner(System.in);
-        System.out.println("数字を入力してください。");
+        System.out.println("数字(0~1000)を入力してください。");
         System.out.print("input=");
         int input = sc.nextInt();
         String s=String.valueOf(input);
@@ -14,7 +14,8 @@ public class IntToEng {
         if(input<20)
         System.out.println(translateEng(input));
         else if(input>=20&&input<=100) System.out.println(Overtwe(str,0));
-        else System.out.println(Overhund(str));
+        else if(input>=101&&input<=1000)System.out.println(Overhund(str));
+        else System.out.println("翻訳できません");
         System.out.print("終了しますか(y/n)");
         String ans=sc.next();
         if(ans.startsWith("y")) break;
@@ -76,6 +77,9 @@ public class IntToEng {
     		hun=translateEng(s)+" hundred ";
     		hun+=Overtwe(str,1);
     		
+    	}else {
+    		hun="one thousand";
+    	
     	}
     	return hun;
     }
