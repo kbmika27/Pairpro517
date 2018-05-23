@@ -62,8 +62,7 @@ public class IntToEng {
     		
     		if(!str[1].equals("0"))
     		keta+=translateEng(Integer.parseInt(str[1]));
-    	}
-    	else {
+    	}else {
     		keta="one hundred";
     	}
     	
